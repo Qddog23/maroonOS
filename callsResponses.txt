@@ -1,0 +1,171 @@
+CALL DATA RECORDED FROM PRUSA MK3S and RASPBERRY PI RUNNING PRUSALINK DURING DEVELOPMENT (DEC 2023 - JAN 2024)
+UPDATED: Jan 01, 2024
+
+
+##### RASPBERRY PI PrusaLink API CALLS #####
+/api/version
+{
+    "api": "0.9.0-legacy", 
+    "server": "0.7.2", 
+    "original": "PrusaLink I3MK3S",
+    "text": "PrusaLink 0.7.2", 
+    "firmware": "3.13.0-6873", 
+    "sdk": "0.7.1", 
+    "capabilities": {
+        "upload-by-put": true
+    }, 
+    "hostname": "prusa"
+}
+
+/api/v1/info
+{
+    "name": "Prusa MK3s", 
+    "location": "Workshop", 
+    "farm_mode": false, 
+    "network_error_chime": false, 
+    "nozzle_diameter": 0.4, 
+    "min_extrusion_temp": 170, 
+    "serial": "000TEST000", 
+    "hostname": "connect.prusa3d.com", 
+    "port": 0
+}
+
+/api/v1/status
+{
+    "storage": [
+        {
+            "path": "/local", 
+            "read_only": false, 
+            "free_space": 5588066304, 
+            "name": "PrusaLink gcodes"
+        }, 
+        {
+            "path": "/sdcard", 
+            "read_only": true, 
+            "name": "SD Card"
+        }
+    ], 
+    "printer": {
+        "state": "IDLE", 
+        "temp_nozzle": 19.0, 
+        "temp_bed": 18.7, 
+        "axis_z": 10.0, 
+        "flow": 100, 
+        "speed": 100, 
+        "fan_hotend": 0, 
+        "fan_print": 0, 
+        "status_connect": {
+            "ok": true, 
+            "message": "Connect isn't configured"
+        }, 
+        "status_printer": {
+            "ok": true, 
+            "message": "OK"
+        }, 
+        "target_nozzle": 0.0, 
+        "target_bed": 0.0, 
+        "axis_x": 0.0, 
+        "axis_y": 0.0
+    }
+}
+
+/api/v1/job
+{
+    "file": {
+        "name": "FILENAME_LAYERHEIGHT_MATERIAL_MK3SMMU2S_TIME.gcode", 
+        "display_name": "FILENAME_LAYERHEIGHT_MATERIAL_MK3SMMU2S_TIME.gcode", 
+        "path": "/SD Card/FILENAME_LAYERHEIGHT_MATERIAL_MK3SMMU2S_TIME.gcode", 
+        "display_path": "/SD Card/FILENAME_LAYERHEIGHT_MATERIAL_MK3SMMU2S_TIME.gcode", 
+        "size": 932645, 
+        "m_timestamp": 1690988346, 
+        "refs": {
+            "download": null, 
+            "icon": null, 
+            "thumbnail": null
+        }, 
+        "meta": {
+            "estimated printing time (normal mode)": "13m", 
+            "printer_model": "MK3SMMU2S", 
+            "layer_height": 0.1, 
+            "filament_type": "PVB", 
+            "estimated_print_time": 780
+        }       
+    }, 
+    "id": 3, 
+    "state": "ATTENTION", 
+    "progress": 0.0, 
+    "time_remaining": null, 
+    "time_printing": 0, 
+    "inaccurate_estimates": null
+}
+##### RASPBERRY PI PrusaLink API CALLS #####
+
+##### PRUSA MK4 PrusaLink API CALLS #####
+/version
+{
+    "api": "2.0.0", 
+    "server": "2.1.2", 
+    "nozzle_diameter" :0.40, 
+    "text": "PrusaLink", 
+    "hostname": "PrusaMK4", 
+    "capabilities": {
+        "upload-by-put": true
+    }
+}
+
+api/v1/status
+{
+    "job": {
+        "id":43, 
+        "progress": 28.00, 
+        "time_remaining": 7560, 
+        "time_printing": 3302
+    }, 
+    "storage": {
+        "path": "/usb/", 
+        "name": "usb", 
+        "read_only": false
+    }, 
+    "printer": {
+        "state": "PRINTING",        (IDLE when not printing)
+        "temp_bed": 60.0,
+        "target_bed": 60.0,
+        "temp_nozzle": 220.1,
+        "target_nozzle": 220.0,
+        "axis_z":4.3, 
+        "flow": 100,
+        "speed": 100, 
+        "fan_hotend": 4098,
+        "fan_print": 6314,
+    }
+}
+
+/api/v1/job
+{
+    "id":43,
+    "state": "PRINTING",
+    "progress": 30.00,
+    "time_remaining": 7440,
+    "time_printing": 3472,
+    "file": {
+        "refs": {
+            "icon": "/thumb/s/usb/AMPSTA~1.BGC",
+            "thumbnail": "/thumb/l/usb/AMPSTA~1.BGC",
+            "download": "/usb/AMPSTA~1.BGC",
+        },
+        "name":"AMPSTA~1.BGC",
+        "display_name": "Amp Station Blue_0.4n_0.1mm_PLA_MK4IS_2h58m.bgcode:",
+        "path": "/usb",
+        "size":0,
+        "m_timestamp": 1704831009,
+    }
+}
+
+/api/v1/info
+{
+    "nozzle_diameter": 0.40, 
+    "mmu": false, 
+    "serial": "10589-3742441631712015", 
+    "hostname" : "PrusaMK4", 
+    "min_extrusion_temp":170,
+}

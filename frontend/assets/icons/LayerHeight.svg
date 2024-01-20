@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="LayerHeight" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 11.83 15.78">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-2 {
+        fill: none;
+      }
+
+      .cls-2, .cls-3, .cls-4 {
+        stroke-width: 0px;
+      }
+
+      .cls-5 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-4 {
+        fill: #f26936;
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-2" x=".98" width="4.96" height="7.89"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-2" x="5.94" width="4.96" height="7.89"/>
+    </clipPath>
+  </defs>
+  <g id="Vector">
+    <path class="cls-4" d="M11.07,11.85H1.15c-.09,0-.17-.07-.17-.17v-1.66c0-.09.07-.17.17-.17h5.65c.09,0,.17-.07.17-.17v-1.75c0-.09-.07-.17-.17-.17h-1.7c-.09,0-.17.07-.17.17v.78c0,.09-.07.17-.17.17H.17c-.09,0-.17.07-.17.17v3.62c0,.09.07.17.17.17h10.57c.09,0,.17.07.17.17v.65c0,.09-.07.17-.17.17H.17c-.09,0-.17.07-.17.17v1.64c0,.09.07.17.17.17h11.5c.09,0,.17-.07.17-.17v-3.61c0-.09-.07-.17-.17-.17h-.59Z"/>
+    <g>
+      <g id="_Mirror_Repeat_" data-name="&amp;lt;Mirror Repeat&amp;gt;">
+        <g class="cls-1">
+          <path class="cls-3" d="M5.94,7.89l.8-.12c.11-.02.13-.09.04-.16l-4.24-3.55c-.08-.07-.15-.22-.15-.32V.2c0-.11-.09-.2-.2-.2h-1.02c-.11,0-.2.09-.2.2v4.2c0,.11.07.25.15.32l3.79,3.17"/>
+        </g>
+      </g>
+      <g id="_Mirror_Repeat_-2" data-name="&amp;lt;Mirror Repeat&amp;gt;">
+        <g class="cls-5">
+          <path class="cls-3" d="M5.94,7.89l-.47-.33c-.09-.06-.09-.17-.01-.24l3.88-3.25c.08-.07.15-.22.15-.32V.2c0-.11.09-.2.2-.2h1.02c.11,0,.2.09.2.2v4.2c0,.11-.07.25-.15.32l-3.79,3.17"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

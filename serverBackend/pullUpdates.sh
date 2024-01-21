@@ -7,7 +7,7 @@ cd home/pi/maroonOS
 git fetch
 
 if [ "$(git diff origin/main)" != "" ]; then
-    git pull
+    git reset --hard origin/main
     sudo reboot
 fi
 

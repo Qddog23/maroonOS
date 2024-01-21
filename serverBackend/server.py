@@ -152,7 +152,7 @@ def getThumbnail():
     
 def createServer():
     global printerInfo, apiKey, ipAddress
-    file_path = os.path.dirname(__file__) + '/../printerInfo.txt'
+    file_path = 'printerInfo.txt'
     
     # Load printer info from file or create file if it doesn't exist
     if not os.path.exists(file_path):
@@ -166,7 +166,7 @@ def createServer():
     printerInfo = data
 
     # Load API key and IP address from file or create file if it doesn't exist
-    file_path = os.path.dirname(__file__) + '/../printerAuth.txt'
+    file_path = 'printerAuth.txt'
     
     if not os.path.exists(file_path):
         data = {"ip": "0.0.0.0", "api_key": "replace_with_api_key"}

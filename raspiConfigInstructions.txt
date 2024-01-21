@@ -151,7 +151,7 @@ Configure Server Start
 
     Confirm server starts by running:
         sh serverStart.sh
-        (will probably say something along the lines of "WARNING: Do not use the development server in a production environment.")
+      
     If the server starts, press ctrl+c to stop it
 
     cd /

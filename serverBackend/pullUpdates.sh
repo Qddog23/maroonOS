@@ -9,5 +9,6 @@ git fetch
 if [ "$(git diff origin/master)" != "" ]; then
     git pull
     sudo reboot
+fi
 
 cd /

@@ -18,6 +18,7 @@ printerInfo = {}
 count = 0       # Used in dev mode to cycle through different states
 
 devMode = False  # Set to True to run in development mode (works offline or when pi/printer isn't available)
+cycleStates = False  # Set to True to cycle through different printer states when dev mode is True
 
 status = {
     "job": {
@@ -88,12 +89,13 @@ def hello():
 def getStatus():
     global count, ipAddress
     if devMode:
-        count += 1
-        # if count == 3:
-        #     status['printer']['state'] = 'PRINTING'
-        # elif count == 6:
-        #     status['printer']['state'] = 'IDLE'
-        #     count = 0
+        if cycleStates:
+            count += 1
+            if count == 3:
+                status['printer']['state'] = 'PRINTING'
+            elif count == 6:
+                status['printer']['state'] = 'IDLE'
+                count = 0
         status['printer']['temp_nozzle'] = liveNozzle()
         status['printer']['temp_bed'] = liveBed()
         status['printer']['target_nozzle'] = liveNozzle()

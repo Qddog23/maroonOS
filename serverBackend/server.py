@@ -10,8 +10,8 @@ import os
 
 global devMode, status, job, info, version, apiKey, count, printerInfo
 
-ipAddress = '192.168.0.0'
-apiKey = 'thisWillBeAnAPIKey'
+ipAddress = ''
+apiKey = ''
 printerInfo = {}
 
 

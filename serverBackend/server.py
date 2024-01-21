@@ -8,10 +8,12 @@ from flask import after_this_request
 import tempfile
 import os
 
-global devMode, status, job, info, version, apiKey, count
+global devMode, status, job, info, version, apiKey, count, printerInfo
 
 ipAddress = ''
 apiKey = ''
+printerInfo = {}
+
 
 count = 0       # Used in dev mode to cycle through different states
 
@@ -120,16 +122,7 @@ def getJob():
 
 @app.route('/info')
 def getInfo():
-    file_path = os.path.dirname(__file__) + '/../printerInfo.txt'
-    
-    if not os.path.exists(file_path):
-        data = {"name": "Printer Name", "firmware": "0.0.0"}  # replace with the data you want to write
-        with open(file_path, 'w') as file:
-            json.dump(data, file)
-    
-    with open(file_path, 'r') as file:
-        data = json.load(file)
-    return json.dumps(data)
+    return json.dumps(printerInfo)
     
 @app.route('/thumbnail')
 def getThumbnail():
@@ -158,6 +151,34 @@ def getThumbnail():
         return send_file(temp_path, mimetype='image/png')
     
 def createServer():
+    global printerInfo, apiKey, ipAddress
+    file_path = os.path.dirname(__file__) + '/../printerInfo.txt'
+    
+    # Load printer info from file or create file if it doesn't exist
+    if not os.path.exists(file_path):
+        data = {"name": "Printer Name", "firmware": "0.0.0"}
+        with open(file_path, 'w') as file:
+            json.dump(data, file)
+    
+    with open(file_path, 'r') as file:
+        data = json.load(file)
+    
+    printerInfo = data
+
+    # Load API key and IP address from file or create file if it doesn't exist
+    file_path = os.path.dirname(__file__) + '/../printerAuth.txt'
+    
+    if not os.path.exists(file_path):
+        data = {"ip": "0.0.0.0", "api_key": "replace_with_api_key"}
+        with open(file_path, 'w') as file:
+            json.dump(data, file)
+    
+    with open(file_path, 'r') as file:
+        data = json.load(file)
+    
+    apiKey = data['api_key']
+    ipAddress = data['ip']
+
     return app
 
 if __name__ == '__main__':

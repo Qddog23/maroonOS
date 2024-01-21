@@ -1,4 +1,0 @@
-{
-    "name": "Prusa MK4 [A]",
-    "firmware": "5.1.2"
-}

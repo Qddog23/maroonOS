@@ -120,7 +120,14 @@ def getJob():
 
 @app.route('/info')
 def getInfo():
-    with open(os.path.dirname(__file__) + '/../printerInfo.txt', 'r') as file:
+    file_path = os.path.dirname(__file__) + '/../printerInfo.txt'
+    
+    if not os.path.exists(file_path):
+        data = {"name": "Printer Name", "firmware": "0.0.0"}  # replace with the data you want to write
+        with open(file_path, 'w') as file:
+            json.dump(data, file)
+    
+    with open(file_path, 'r') as file:
         data = json.load(file)
     return json.dumps(data)
     

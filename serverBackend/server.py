@@ -11,7 +11,7 @@ import os
 global devMode, status, job, info, version, apiKey, count, printerInfo
 
 ipAddress = '192.168.0.0'
-apiKey = 'thisWillBeanAPIKey'
+apiKey = 'thisWillBeAnAPIKey'
 printerInfo = {}
 
 
@@ -179,8 +179,7 @@ def createServer():
     apiKey = data['api_key']
     ipAddress = data['ip']
 
-    return app
-
 if __name__ == '__main__':
     from waitress import serve
+    createServer()
     serve(app, host="127.0.0.1", port=8002)

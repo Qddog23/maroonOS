@@ -65,14 +65,14 @@ Move Files to Internal Storage
 
             sudo mount /dev/sda1 /media/usb -o uid=pi,gid=pi (change sda1 if the UUID is different)
 
-        Copy the files from the USB to the PrinterStatusScreen folder
+        Copy the files from the USB to the maroonOS folder
         More details can be found here: https://projects.raspberrypi.org/en/projects/rpi-gui-copying-files
             cd /
-            cp -r media/usb/PrinterStatusScreens home/pi
+            cp -r media/usb/maroonOS home/pi
 
-        Confirm that the files were copied by typing ls in the PrinterStatusScreens folder
+        Confirm that the files were copied by typing ls in the maroonOS folder
             cd /
-            cd home/pi/PrinterStatusScreens
+            cd home/pi/maroonOS
             ls
 
         Return to previous guide to unmount the drive: https://www.makeuseof.com/tag/copy-data-raspberry-pi-pc/
@@ -111,7 +111,7 @@ Configure Display Launch Script
         # Start Chromium in kiosk mode
         sed -i 's/"exited_cleanly":false/"exited_cleanly":true/' ~/.config/chromium/'Local State'
         sed -i 's/"exited_cleanly":false/"exited_cleanly":true/; s/"exit_type":"[^"]\+"/"exit_type":"Normal"/' ~/.config/chromium/Default/Preferences
-        chromium-browser --disable-infobars --window-size=1440,2560 --kiosk 'file:///home/pi/PrinterStatusScreens/frontend/sleep.html'
+        chromium-browser --disable-infobars --window-size=1440,2560 --kiosk 'file:///home/pi/maroonOS/frontend/sleep.html'
 
     Exit (ctrl+x) and save (y)
 
@@ -146,7 +146,7 @@ Configure Server Start
 
     cd /
     cd home/pi
-    cd PrinterStatusScreens/serverBackend
+    cd maroonOS/serverBackend
     chmod 755 serverStart.sh
 
     Confirm server starts by running:
@@ -158,7 +158,7 @@ Configure Server Start
     sudo crontab -e
     (If prompted to select an editor, choose nano)
     Go to a free line and type:
-        @reboot sh /home/pi/PrinterStatusScreens/serverBackend/serverStart.sh >/home/pi/PrinterStatusScreens/serverBackend/startupErrorLogs/cronlog 2>&1
+        @reboot sh /home/pi/maroonOS/serverBackend/serverStart.sh >/home/pi/maroonOS/serverBackend/startupErrorLogs/cronlog 2>&1
     Exit (ctrl+x) and save (y)
 
 

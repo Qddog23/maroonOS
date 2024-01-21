@@ -1,9 +1,6 @@
 #!/bin/sh
 # start Chromium frontend
 
-#[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx -- -nocursor
-#startx -- -nocursor
-
 checkDisplay(){
     if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
         echo True

@@ -4,7 +4,10 @@
 cd /
 cd home/pi/maroonOS
 
-git pull
+git fetch
+
+if [ "$(git diff origin/master)" != "" ]; then
+    git pull
+    sudo reboot
 
 cd /
-sudo reboot

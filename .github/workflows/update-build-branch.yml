@@ -29,7 +29,7 @@ jobs:
           git checkout build callsResponses.txt
           git checkout build raspiConfigInstructions.txt
           git checkout build README.md
-          git checkout build LICENCE
+          git checkout build LICENSE
           git checkout build .vscode/*
 
       - name: Commit changes

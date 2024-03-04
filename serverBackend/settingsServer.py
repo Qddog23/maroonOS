@@ -7,6 +7,8 @@ global devMode
 
 devMode = False  # Set to True to run in development mode (works offline or when pi/printer isn't available)
 
+### TEST ###
+
 app = Flask(__name__)
 CORS(app)
 

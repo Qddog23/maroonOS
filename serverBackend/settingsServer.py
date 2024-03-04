@@ -13,7 +13,7 @@ app = Flask(__name__)
 CORS(app)
 
 def checkUpdates():
-    subprocess.run(["/home/pi/maroonOS/serverBackend/pullUpdates.sh"])
+    subprocess.run(["sh", "/home/pi/maroonOS/serverBackend/pullUpdates.sh"])
 
 scheduler = BackgroundScheduler()
 # scheduler.add_job(func=checkUpdates, trigger="cron", hour="0", minute="0")

@@ -1,12 +1,21 @@
 from flask_cors import CORS
 from flask import Flask
+from apscheduler.schedulers.background import BackgroundScheduler
+import subprocess
 
 global devMode
 
-devMode = True  # Set to True to run in development mode (works offline or when pi/printer isn't available)
+devMode = False  # Set to True to run in development mode (works offline or when pi/printer isn't available)
 
 app = Flask(__name__)
 CORS(app)
+
+def checkUpdates():
+    subprocess.run(["/home/pi/maroonOS/serverBackend/pullUpdates.sh"])
+
+scheduler = BackgroundScheduler()
+scheduler.add_job(func=checkUpdates, trigger="cron", hour="0", minute="0")
+scheduler.start()
 
 @app.route('/')
 def hello_world():

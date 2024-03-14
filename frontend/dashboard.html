@@ -99,20 +99,37 @@
         <div class="widget_blank tempBox">
             <div class="tempsSplit">
                 <div class="widget" id="heatNozzle">
-                    <div class="tempGraphSplit">
-                        <div class="tempsBox">
-                            <div class="tempTitle" id="nozzleTitle">nozzle</div>
-                            <div class="tempValue" id="nozzleTemp">---°</div>
-                            <div class="tempTarget" id="nozzleTarget">/ ---°</div>
+                    <div class="tempsBoxContainer">
+                        <div class="tempGraphSplit" id="nozzleStable">
+                            <div class="tempsBox">
+                                <div class="tempTitle" id="nozzleTitle">nozzle</div>
+                                <div class="tempValue" id="nozzleTemp">---°</div>
+                                <div class="tempTarget" id="nozzleTarget">/ ---°</div>
+                            </div>
+                            <div class="tempGraph">
+                                <canvas id="nozzleChart"></canvas>
+                            </div>
                         </div>
-                        <div class="tempGraph">
-                            <canvas id="nozzleChart"></canvas>
+                        <div class="tempGraphSplit" id="nozzleHeating">
+                            <div class="heatingAnimation" id="nozzleHeating1"></div>
+                            <div class="heatingAnimation" id="nozzleHeating2"></div>
+                            <div class="heatingAnimation" id="nozzleHeating3"></div>
+                            <div class="heatingAnimation" id="nozzleHeating4"></div>
+                            <div class="heatingAnimation" id="nozzleHeating5"></div>
+                            <div class="tempsBox">
+                                <div class="tempTitle darkTemp" id="darkNozzleTitle">nozzle</div>
+                                <div class="tempValue darkTemp" id="darkNozzleTemp">---°</div>
+                                <div class="tempTarget darkTemp" id="darkNozzleTarget">/ ---°</div>
+                            </div>
+                            <div class="tempGraph">
+                                <canvas id="darkNozzleChart"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="widget" id="heatBed">
-                    <div class="gradientMask" id="bedMask">
-                        <div class="tempGraphSplit">
+                    <div class="tempsBoxContainer">
+                        <div class="tempGraphSplit" id="bedStable">
                             <div class="tempsBox">
                                 <div class="tempTitle" id="bedTitle">bed</div>
                                 <div class="tempValue" id="bedTemp">---°</div>
@@ -120,6 +137,21 @@
                             </div>
                             <div class="tempGraph">
                                 <canvas id="bedChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="tempGraphSplit" id="bedHeating">
+                            <div class="heatingAnimation" id="bedHeating1"></div>
+                            <div class="heatingAnimation" id="bedHeating2"></div>
+                            <div class="heatingAnimation" id="bedHeating3"></div>
+                            <div class="heatingAnimation" id="bedHeating4"></div>
+                            <div class="heatingAnimation" id="bedHeating5"></div>
+                            <div class="tempsBox">
+                                <div class="tempTitle darkTemp" id="darkBedTitle">bed</div>
+                                <div class="tempValue darkTemp" id="darkBedTemp">---°</div>
+                                <div class="tempTarget darkTemp" id="darkBedTarget">/ ---°</div>
+                            </div>
+                            <div class="tempGraph">
+                                <canvas id="darkBedChart"></canvas>
                             </div>
                         </div>
                     </div>

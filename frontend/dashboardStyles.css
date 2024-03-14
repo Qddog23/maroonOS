@@ -499,6 +499,7 @@ html, body {
     height: 100%;
     justify-items: center;
     align-items: center;
+    position: absolute;
 }
 
 .tempTitle, .tempTarget {
@@ -506,7 +507,7 @@ html, body {
     color: var(--white);
 }
 
-.tempsBox{
+.tempsBox {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 20% 60% 20%;
@@ -514,6 +515,14 @@ html, body {
     align-items: center;
     width: 100%;
     height: 100%;
+}
+
+.tempsBoxContainer{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    align-items: center;
+    justify-content: center;
 }
 
 .tempTitle {
@@ -539,6 +548,11 @@ html, body {
     transform: translateY(-10px);
 }
 
+.darkTemp {
+    color: var(--dark-grey);
+    z-index: 1;
+}
+
 .tempGraph {
     display: flex;
     width: 100%;
@@ -547,78 +561,53 @@ html, body {
     align-self: center;
     padding-top: 15px;
     padding-right: 20px;
+    z-index: 1;
 }
 
-.bedChart, .nozzleChart {
+.bedChart, .nozzleChart, .darkBedChart, .darkNozzleChart {
     width: 100%;
     height: 100%;
+    z-index: 1;
 }
 
-/* Animated Gradient Created Using https://gradient-tool-lovat.vercel.app/#explore */
-
-#heatNozzle {
-    border-radius: 15px;
-    /* background: radial-gradient( 100% 100% at var(--g5-1-x-position) var(--g5-1-y-position), var(--prusa-orange) -52%, transparent ), radial-gradient( 100% 100% at var(--g5-2-x-position) var(--g5-2-y-position), var(--white) 0%, transparent ), radial-gradient( 100% 100% at var(--g5-3-x-position) var(--g5-3-y-position), var(--prusa-orange) 0%, transparent ), var(--light-grey); */
-    animation-name: g-5;
-    animation-iteration-count: infinite;
-    animation-duration: 6s;
-    transition-timing-function: ease-in-out;
+#bedHeating, #bedStable, #nozzleHeating, #nozzleStable {
+    transition: opacity 0.5s ease-out;
 }
 
-#heatBed {
-    border-radius: 15px;
-    /* background: radial-gradient( 100% 100% at var(--g5-1-x-position) var(--g5-1-y-position), var(--prusa-orange) -52%, transparent ), radial-gradient( 100% 100% at var(--g5-2-x-position) var(--g5-2-y-position), var(--white) 0%, transparent ), radial-gradient( 100% 100% at var(--g5-3-x-position) var(--g5-3-y-position), var(--prusa-orange) 0%, transparent ), var(--light-grey); */
-    animation-name: g-5;
-    animation-iteration-count: infinite;
-    animation-duration: 6s;
-    transition-timing-function: ease-in-out;
-}
-    
-    @property --g5-1-x-position { syntax: "<percentage>"; inherits: false; initial-value: 1.0937500000000024%; }
-    
-    @property --g5-1-y-position { syntax: "<percentage>"; inherits: false; initial-value: 0%; }
-    
-    @property --g5-2-x-position { syntax: "<percentage>"; inherits: false; initial-value: 15.312500000000002%; }
-    
-    @property --g5-2-y-position { syntax: "<percentage>"; inherits: false; initial-value: 85.46875%; }
-    
-    @property --g5-3-x-position { syntax: "<percentage>"; inherits: false; initial-value: 97.1875%; }
-    
-    @property --g5-3-y-position { syntax: "<percentage>"; inherits: false; initial-value: 48.515625%; }
-    
-    
-    :root {
-    
-    --g5-1-x-position: 1.0937500000000024%
-    
-    --g5-1-y-position: 0%
-    
-    --g5-2-x-position: 15.312500000000002%
-    
-    --g5-2-y-position: 85.46875%
-    
-    --g5-3-x-position: 97.1875%
-    
-    --g5-3-y-position: 48.515625%
-    
-    }
-    
-    
-    @keyframes g-5 { 50% { --g5-1-x-position: 99.0234375%; --g5-1-y-position: 99.0234375%; --g5-2-x-position: 84.1796875%; --g5-2-y-position: 13.671875%; --g5-3-x-position: 2.8906249999999996%; --g5-3-y-position: 46.1328125%; } }
-
-.gradientMask {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-self: center;
-    align-self: center;
+#bedHeating, #nozzleHeating {
+    opacity: 0;
     background-color: var(--light-grey);
 }
 
-#bedMask {
-    position: relative;
+.heatingAnimation {
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    position: absolute;
+    width: 850px;
+    height: 850px;
+    mix-blend-mode: screen;
+    transition: transform 2s ease-in-out;
 }
 
-#gradientElement, #nozzleTitle, #nozzleTemp, #nozzleTarget, #bedTitle, #bedTemp, #bedTarget, #bedChart, #nozzleChart, #bedMask {
-    transition: color 0.4s ease-in-out; background-color: 0.4s ease-in-out;
+#bedHeating1, #nozzleHeating1 {
+    background-image: radial-gradient(circle at center, rgba(var(--prusa-orange-alpha), 1) 15%, rgba(var(--prusa-orange-alpha), 0) 75%);
+}
+
+#bedHeating2, #nozzleHeating2 {
+    background-image: radial-gradient(circle at center, rgba(var(--prusa-orange-alpha), 1) 15%, rgba(var(--prusa-orange-alpha), 0) 75%);
+}
+
+#bedHeating3, #nozzleHeating3 {
+    background-image: radial-gradient(circle at center, rgba(var(--prusa-orange-alpha), 1) 15%, rgba(var(--prusa-orange-alpha), 0) 75%);
+}
+
+#bedHeating4, #nozzleHeating4 {
+    background-image: radial-gradient(circle at center, rgba(var(--prusa-orange-alpha), 1) 15%, rgba(var(--prusa-orange-alpha), 0) 75%);
+}
+
+#bedHeating5, #nozzleHeating5 {
+    background-image: radial-gradient(circle at center, rgba(var(--grey-alpha), 1) 15%, rgba(var(--grey-alpha), 0) 75%);
+    width: 500px;
+    height: 500px;
 }

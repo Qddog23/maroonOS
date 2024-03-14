@@ -3,7 +3,7 @@ PASSWORD: raspberry
 
 
 OS Install
-    Use the Raspberry Pi Imager to install Raspberry Pi OS Lite onto a microSD card (install the version without a Desktop).
+    Use the Raspberry Pi Imager to install Raspberry Pi OS Lite onto a microSD card (install the version without a Desktop - if 64 bit is available, use that)
         Use CMD + Shift + X to open the Imager settings (CTRL + Shift + X on Windows)
         Set hostname to 3da or 3db respectively
         Set username as pi
@@ -138,6 +138,7 @@ Install Necessary Modules
     sudo apt-get install python3-pip
     sudo pip3 install waitress
     sudo pip3 install flask
+    sudo pip3 install apscheduler
     sudo pip3 install flask_cors (is probably installed with flask but run just in case)
     sudo pip3 install requests  (is probably already installed but run just in case)
 

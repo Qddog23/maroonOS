@@ -4,4 +4,9 @@
     --dark-grey: #080808;
     --white: white;
     --prusa-orange: #FA6831;
+    --grey: #b5b5b5;
+
+    --grey-alpha: 91, 91, 91;
+    --prusa-orange-alpha: 250, 104, 49;
+    --white-alpha: 255, 255, 255;
 }

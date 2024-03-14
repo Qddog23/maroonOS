@@ -813,7 +813,7 @@ setInterval(() => {
   getJobDynamic();
   getStatus((state) => {
     if (state == 'IDLE') {
-      // redirect('sleep');
+      redirect('sleep');
     }
   });
 }, updateInterval);

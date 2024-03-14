@@ -573,8 +573,8 @@ let updateDate = () => {
   document.getElementById('dow').style.fontSize = dayText[dow] + 'px';
   document.getElementById('dow').textContent = days[dow];
   if (month == 2){
-    document.getElementById('date').style.fontSize = '33px';
-    dateFont = 33;
+    document.getElementById('date').style.fontSize = '35px';
+    dateFont = 35;
   }
   if (month == 3){
     document.getElementById('date').style.transform = 'translateY(8px)';

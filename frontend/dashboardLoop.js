@@ -756,23 +756,23 @@ let bedAnimateGradient = () => {
 
   randomTranslateX = Math.floor(Math.random() * 300) - 300;
   randomTranslateY = Math.floor(Math.random() * (VarianceY * 2)) - VarianceY;
-  bedHeating1.style.transform = `translate(${randomTranslateX}px, ${randomTranslateY}px)`;
+  bedHeating1.style.transform = `translate3d(${randomTranslateX}px, ${randomTranslateY}px, 0px)`;
 
   randomTranslateX = Math.floor(Math.random() * 300) - 300;
   randomTranslateY = Math.floor(Math.random() * (VarianceY * 2)) - VarianceY;
-  bedHeating2.style.transform = `translate(${randomTranslateX}px, ${randomTranslateY}px)`;
+  bedHeating2.style.transform = `translate3d(${randomTranslateX}px, ${randomTranslateY}px, 0px)`;
 
   randomTranslateX = Math.floor(Math.random() * 300);
   randomTranslateY = Math.floor(Math.random() * (VarianceY * 2)) - VarianceY;
-  bedHeating3.style.transform = `translate(${randomTranslateX}px, ${randomTranslateY}px)`;
+  bedHeating3.style.transform = `translate3d(${randomTranslateX}px, ${randomTranslateY}px, 0px)`;
 
   randomTranslateX = Math.floor(Math.random() * 300);
   randomTranslateY = Math.floor(Math.random() * (VarianceY * 2)) - VarianceY;
-  bedHeating4.style.transform = `translate(${randomTranslateX}px, ${randomTranslateY}px)`;
+  bedHeating4.style.transform = `translate3d(${randomTranslateX}px, ${randomTranslateY}px, 0px)`;
 
   randomTranslateX = Math.floor(Math.random() * 600) - 300;
   randomTranslateY = Math.floor(Math.random() * (VarianceY * 2)) - VarianceY;
-  bedHeating5.style.transform = `translate(${randomTranslateX}px, ${randomTranslateY}px)`;
+  bedHeating5.style.transform = `translate3d(${randomTranslateX}px, ${randomTranslateY}px, 0px)`;
 }
 
 let nozzleAnimateGradient = () => {
@@ -782,23 +782,23 @@ let nozzleAnimateGradient = () => {
 
   randomTranslateX = Math.floor(Math.random() * 300) - 300;
   randomTranslateY = Math.floor(Math.random() * (VarianceY * 2)) - VarianceY;
-  nozzleHeating1.style.transform = `translate(${randomTranslateX}px, ${randomTranslateY}px)`;
+  nozzleHeating1.style.transform = `translate3d(${randomTranslateX}px, ${randomTranslateY}px, 0px)`;
 
   randomTranslateX = Math.floor(Math.random() * 300) - 300;
   randomTranslateY = Math.floor(Math.random() * (VarianceY * 2)) - VarianceY;
-  nozzleHeating2.style.transform = `translate(${randomTranslateX}px, ${randomTranslateY}px)`;
+  nozzleHeating2.style.transform = `translate3d(${randomTranslateX}px, ${randomTranslateY}px, 0px)`;
 
   randomTranslateX = Math.floor(Math.random() * 300);
   randomTranslateY = Math.floor(Math.random() * (VarianceY * 2)) - VarianceY;
-  nozzleHeating3.style.transform = `translate(${randomTranslateX}px, ${randomTranslateY}px)`;
+  nozzleHeating3.style.transform = `translate3d(${randomTranslateX}px, ${randomTranslateY}px, 0px)`;
 
   randomTranslateX = Math.floor(Math.random() * 300);
   randomTranslateY = Math.floor(Math.random() * (VarianceY * 2)) - VarianceY;
-  nozzleHeating4.style.transform = `translate(${randomTranslateX}px, ${randomTranslateY}px)`;
+  nozzleHeating4.style.transform = `translate3d(${randomTranslateX}px, ${randomTranslateY}px, 0px)`;
 
   randomTranslateX = Math.floor(Math.random() * 600) - 300;
   randomTranslateY = Math.floor(Math.random() * (VarianceY * 2)) - VarianceY;
-  nozzleHeating5.style.transform = `translate(${randomTranslateX}px, ${randomTranslateY}px)`;
+  nozzleHeating5.style.transform = `translate3d(${randomTranslateX}px, ${randomTranslateY}px, 0px)`;
 }
 
 /// MAIN LOOP ///

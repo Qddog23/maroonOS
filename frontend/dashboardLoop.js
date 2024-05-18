@@ -4,7 +4,13 @@ let lightgrey = getComputedStyle(document.documentElement).getPropertyValue('--l
 let darkgrey = getComputedStyle(document.documentElement).getPropertyValue('--dark-grey');
 document.getElementById('progressNotices').style.animation = 'none';
 
-let updateInterval = 1000;
+const live = document.getElementById('live');
+const sleep = document.getElementById('sleep');
+sleep.style.display = '';
+live.style.display = 'none';
+
+let liveUpdateInterval = 1000;
+let sleepUpdateInterval = 2000;
 let maxBedValue = -1;
 let maxNozzleValue = -1;
 
@@ -44,7 +50,7 @@ const xValues = [];
 const bedyValues = [];
 const nozzleyValues = [];
 for (let i = 0; i < 20; i++) {
-  xValues.push(i * (updateInterval / 1000));
+  xValues.push(i * (liveUpdateInterval / 1000));
   bedyValues.push(0);
   nozzleyValues.push(0);
 }
@@ -327,13 +333,6 @@ let getThumbnail = () => {
       document.getElementById('thumbnail').style.height = '90%';
       document.getElementById('thumbnail').src = 'assets/RobocubsLogo.png';
     });
-}
-
-let redirect = (fileName) => {
-  let currentUrl = window.location.href;
-  let baseUrl = currentUrl.substring(0, currentUrl.lastIndexOf('/') + 1);
-  let newUrl = baseUrl + fileName+ '.html';
-  window.location.href = newUrl;
 }
 
 let checkLength = (title) => {
@@ -801,19 +800,38 @@ let nozzleAnimateGradient = () => {
   nozzleHeating5.style.transform = `translate3d(${randomTranslateX}px, ${randomTranslateY}px, 0px)`;
 }
 
-/// MAIN LOOP ///
-getJobStatic();
-getInfo();
-getThumbnail();
-updateDate();
-getJobDynamic();
-getStatus(state => {});
-setInterval(() => {
-  updateDate();
-  getJobDynamic();
+let outerIntervalId = null;
+let innerIntervalId = null;
+
+outerIntervalId = setInterval(() => {
   getStatus((state) => {
-    if (state == 'IDLE') {
-      redirect('sleep');
+    if (state == 'PRINTING') {
+      clearInterval(outerIntervalId);
+      outerIntervalId = null;
+
+      getThumbnail();
+      live.style.display = '';
+      sleep.style.display = 'none';
+      getJobStatic();
+      getInfo();
+      updateDate();
+      getJobDynamic();
+      getStatus(state => {});
+      
+      innerIntervalId = setInterval(() => {
+        updateDate();
+        getJobDynamic();
+        getStatus((state) => {
+          if (state != 'PRINTING') {
+            clearInterval(innerIntervalId);
+            innerIntervalId = null;
+            outerIntervalId = setInterval(sleepUpdateInterval);
+          }
+        });
+      }, liveUpdateInterval);
+    } else {
+      sleep.style.display = '';
+      live.style.display = 'none';
     }
   });
-}, updateInterval);
+}, sleepUpdateInterval);

@@ -8,4 +8,4 @@ while ! is_display_connected; do
     sleep 1
 done
 
-/usr/bin/chromium-browser --noerrdialogs --disable-infobars --kiosk 'file:///home/pi/maroonOS/frontend/sleep.html'
+sudo /usr/bin/chromium-browser --noerrdialogs --disable-infobars --kiosk 'file:///home/pi/maroonOS/frontend/sleep.html'

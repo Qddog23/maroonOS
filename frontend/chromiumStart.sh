@@ -1,6 +1,6 @@
 #!/bin/sh
 
-function is_desktop_logged_in() {
+is_desktop_logged_in() {
     pgrep lxsession >/dev/null || pgrep xfwm4 >/dev/null
 }
 

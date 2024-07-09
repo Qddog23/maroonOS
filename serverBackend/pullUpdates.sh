@@ -10,6 +10,9 @@ if [ "$(git diff origin/main)" != "" ]; then
     git reset --hard origin/main
 fi
 
-sudo reboot
+chmod +x serverBackend/serverStart.sh
+chmod +x serverBackend/pullUpdates.sh
+chmod +x serverBackend/server.py
+chmod +x serverBackend/settingsServer.py
 
-cd /
+sudo reboot

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 is_desktop_logged_in() {
-    pgrep lxsession >/dev/null || pgrep xfwm4 >/dev/null
+    pgrep gnome-session >/dev/null
 }
 
 while ! is_desktop_logged_in; do

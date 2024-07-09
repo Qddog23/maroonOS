@@ -1,6 +1,6 @@
 #!/bin/sh
 
-function is_display_connected() {
+is_display_connected() {
     /usr/bin/xrandr | grep -q 'HDMI-0 connected\|HDMI-1 connected'
 }
 

@@ -1,0 +1,7 @@
+# Connect Authentication
+IP = '0.0.0.0'
+API_KEY = 'api_key'
+
+# Printer Info
+PRINTER_NAME = 'Name'
+FIRMWARE = 'FW'

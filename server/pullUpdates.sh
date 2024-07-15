@@ -2,7 +2,7 @@
 # navigate to home directory, then to this directory, then pull updates, then back home
 
 cd /
-cd home/pi/maroonOS
+cd home/robocubs/maroonOS
 
 git fetch
 

@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/quincyd/Library/CloudStorage/OneDrive-Personal/Documents/High School/Robotics/maroonOS/serverBackend/venv/venv"
+set -gx VIRTUAL_ENV "/Users/quincyd/Library/CloudStorage/OneDrive-Personal/Documents/High School/Robotics/maroonOS/server/venv/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

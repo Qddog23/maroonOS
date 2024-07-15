@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/quincyd/Library/CloudStorage/OneDrive-Personal/Documents/High School/Robotics/maroonOS/serverBackend/venv/venv"
+VIRTUAL_ENV="/Users/quincyd/Library/CloudStorage/OneDrive-Personal/Documents/High School/Robotics/maroonOS/server/venv/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

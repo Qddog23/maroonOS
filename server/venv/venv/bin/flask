@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/Users/quincyd/Library/CloudStorage/OneDrive-Personal/Documents/High School/Robotics/maroonOS/serverBackend/venv/venv/bin/python3" "$0" "$@"
+'''exec' "/Users/quincyd/Library/CloudStorage/OneDrive-Personal/Documents/High School/Robotics/maroonOS/server/venv/venv/bin/python3" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re

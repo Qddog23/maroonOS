@@ -1,3 +1,3 @@
 #!/bin/sh
 
-/usr/bin/chromium-browser --noerrdialogs --disable-infobars --kiosk 'file:///home/pi/maroonOS/frontend/sleep.html'
+/usr/bin/chromium-browser --start-maximized --kiosk --noerrdialogs --disable-infobars 'file:///home/pi/maroonOS/frontend/sleep.html'

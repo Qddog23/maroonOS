@@ -21,7 +21,7 @@ printerInfo = {
 
 count = 0       # Used in dev mode to cycle through different states
 
-devMode = True  # Set to True to run in development mode (works offline or when pi/printer isn't available)
+devMode = False  # Set to True to run in development mode (works offline or when pi/printer isn't available)
 cycleStates = False  # Set to True to cycle through different printer states when dev mode is True
 
 status = {

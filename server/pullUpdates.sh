@@ -5,7 +5,10 @@ cd /
 cd home/robocubs/maroonOS
 
 git fetch
-git reset --hard origin/main
+
+if [ "$(git diff origin/main)" != "" ]; then
+    git reset --hard origin/main
+fi
 
 chmod +x server/serverStart.sh
 chmod +x server/pullUpdates.sh

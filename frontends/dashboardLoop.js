@@ -803,12 +803,13 @@ let nozzleAnimateGradient = () => {
 let outerIntervalId = null;
 let innerIntervalId = null;
 
+// MAIN LOOP
 outerIntervalId = setInterval(() => {
   getStatus((state) => {
-    if (state == 'PRINTING') {
-      clearInterval(outerIntervalId);
-      outerIntervalId = null;
 
+    // State Printing
+    if (state == 'PRINTING') {
+      // Get Static Information
       getThumbnail();
       live.style.display = '';
       sleep.style.display = 'none';
@@ -818,17 +819,22 @@ outerIntervalId = setInterval(() => {
       getJobDynamic();
       getStatus(state => {});
       
+      // Start Inner Loop
       innerIntervalId = setInterval(() => {
+
+        // Get Dynamic Information
         updateDate();
         getJobDynamic();
+
+        // Get current state of the printer
         getStatus((state) => {
           if (state != 'PRINTING') {
             clearInterval(innerIntervalId);
             innerIntervalId = null;
-            outerIntervalId = setInterval(sleepUpdateInterval);
           }
         });
       }, liveUpdateInterval);
+
     } else {
       sleep.style.display = '';
       live.style.display = 'none';

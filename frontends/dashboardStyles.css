@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+html {
+    cursor: none;
+}
+
 html, body {
     height: 100%;
     margin: 0;

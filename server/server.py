@@ -12,7 +12,7 @@ global devMode, status, job, info, version, apiKey, count, printerInfo
 
 load_dotenv(override=True)
 
-ipAddress = os.getenv('IP_ADDRESS')
+ipAddress = os.getenv('IP')
 apiKey = os.getenv('API_KEY')
 printerInfo = {
     "name": os.getenv('PRINTER_NAME'),

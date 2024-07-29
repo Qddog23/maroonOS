@@ -9,8 +9,8 @@ const sleep = document.getElementById('sleep');
 sleep.style.display = '';
 live.style.display = 'none';
 
-let liveUpdateInterval = 1000;
-let sleepUpdateInterval = 2000;
+let liveUpdateInterval = 2000;
+let sleepUpdateInterval = 4000;
 let maxBedValue = -1;
 let maxNozzleValue = -1;
 

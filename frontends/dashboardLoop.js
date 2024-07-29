@@ -9,8 +9,8 @@ const sleep = document.getElementById('sleep');
 sleep.style.display = '';
 live.style.display = 'none';
 
-let liveUpdateInterval = 2000;
-let sleepUpdateInterval = 4000;
+let liveUpdateInterval = 1000;
+let sleepUpdateInterval = 2000;
 let maxBedValue = -1;
 let maxNozzleValue = -1;
 
@@ -803,8 +803,13 @@ let nozzleAnimateGradient = () => {
 let outerIntervalId = null;
 let innerIntervalId = null;
 
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 // MAIN LOOP
-outerIntervalId = setInterval(() => {
+async function main() {
+  do {
   getStatus((state) => {
 
     // State Printing
@@ -840,4 +845,9 @@ outerIntervalId = setInterval(() => {
       live.style.display = 'none';
     }
   });
-}, sleepUpdateInterval);
+
+    await delay(sleepUpdateInterval);
+  } while (true);
+}
+
+main();

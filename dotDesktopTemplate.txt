@@ -1,4 +1,4 @@
 [Desktop Entry]
 Type=Application
 Name=maroonOS
-Exec=/home/robocubs/maroonOS/frontends/chromiumStart.sh
+Exec=/home/robocubs/maroonOS/frontends/regular/chromiumStart.sh

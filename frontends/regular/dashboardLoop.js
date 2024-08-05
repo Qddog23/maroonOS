@@ -1,5 +1,3 @@
-const { clear } = require("console");
-
 let white = getComputedStyle(document.documentElement).getPropertyValue('--white');
 let black = getComputedStyle(document.documentElement).getPropertyValue('--black');
 let lightgrey = getComputedStyle(document.documentElement).getPropertyValue('--light-grey');

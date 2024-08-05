@@ -9,7 +9,7 @@ const sleep = document.getElementById('sleep');
 sleep.style.display = '';
 live.style.display = 'none';
 
-let liveUpdateInterval = 1000;
+let liveUpdateInterval = 1250;
 let sleepUpdateInterval = 2000;
 let maxBedValue = -1;
 let maxNozzleValue = -1;
@@ -623,9 +623,9 @@ let updateDate = () => {
 let updateBedGraph = (data) => {
   let firstVal = false;
 
-  // if (bedyValues.every(value => value === 0)) {
-  //   firstVal = true;
-  // }
+  if (bedyValues.every(value => value === 0)) {
+    firstVal = true;
+  }
   
   if (firstVal == true) {
     bedyValues.length = 0;
@@ -657,9 +657,9 @@ let updateBedGraph = (data) => {
 let updateNozzleGraph = (data) => {
   let firstVal = false;
 
-  // if (nozzleyValues.every(value => value === 0)) {
-  //   firstVal = true;
-  // }
+  if (nozzleyValues.every(value => value === 0)) {
+    firstVal = true;
+  }
   
   if (firstVal == true) {
     nozzleyValues.length = 0;

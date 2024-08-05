@@ -1,3 +1,5 @@
+const { clear } = require("console");
+
 let white = getComputedStyle(document.documentElement).getPropertyValue('--white');
 let black = getComputedStyle(document.documentElement).getPropertyValue('--black');
 let lightgrey = getComputedStyle(document.documentElement).getPropertyValue('--light-grey');
@@ -9,7 +11,7 @@ const sleep = document.getElementById('sleep');
 sleep.style.display = '';
 live.style.display = 'none';
 
-let liveUpdateInterval = 1250;
+let liveUpdateInterval = 1000;
 let sleepUpdateInterval = 2000;
 let maxBedValue = -1;
 let maxNozzleValue = -1;
@@ -800,54 +802,55 @@ let nozzleAnimateGradient = () => {
   nozzleHeating5.style.transform = `translate3d(${randomTranslateX}px, ${randomTranslateY}px, 0px)`;
 }
 
-let outerIntervalId = null;
-let innerIntervalId = null;
+function staticPrinting() {
+  getThumbnail();
+  live.style.display = '';
+  sleep.style.display = 'none';
+  getJobStatic();
+  getInfo();
+  updateDate();
+  getJobDynamic();
+  getStatus(state => {});
+}
 
-function delay(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+function dynamicPrinting() {
+  // Get Dynamic Information
+  updateDate();
+  getJobDynamic();
 }
 
 // MAIN LOOP
-async function main() {
-  do {
+function mainLoop() {
   getStatus((state) => {
 
     // State Printing
     if (state == 'PRINTING') {
       // Get Static Information
-      getThumbnail();
-      live.style.display = '';
-      sleep.style.display = 'none';
-      getJobStatic();
-      getInfo();
-      updateDate();
-      getJobDynamic();
-      getStatus(state => {});
+      staticPrinting();
       
       // Start Inner Loop
-      innerIntervalId = setInterval(() => {
-
-        // Get Dynamic Information
-        updateDate();
-        getJobDynamic();
-
-        // Get current state of the printer
+      function printingLoop() {
+        dynamicPrinting();
         getStatus((state) => {
-          if (state != 'PRINTING') {
-            clearInterval(innerIntervalId);
-            innerIntervalId = null;
+          if (state == 'PRINTING') {
+            setTimeout(dynamicPrinting, liveUpdateInterval);
+          }
+          else {
+            sleep.style.display = '';
+            live.style.display = 'none';
           }
         });
-      }, liveUpdateInterval);
-
+      }
+      printingLoop();
+      
     } else {
       sleep.style.display = '';
       live.style.display = 'none';
     }
   });
 
-    await delay(sleepUpdateInterval);
-  } while (true);
+  setTimeout(mainLoop, sleepUpdateInterval);
 }
 
-main();
+// Start Main
+mainLoop();

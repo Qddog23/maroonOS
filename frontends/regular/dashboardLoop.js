@@ -321,7 +321,7 @@ let getThumbnail = () => {
           if (size.width != 999 || size.height != 999) {
            view.style.width = '90%';
            view.style.height = '90%';
-           view.src = 'assets/RobocubsLogo.png';
+           view.src = '../assets/RobocubsLogo.png';
           }
           else{
             view.src = image;
@@ -623,9 +623,9 @@ let updateDate = () => {
 let updateBedGraph = (data) => {
   let firstVal = false;
 
-  if (bedyValues.every(value => value === 0)) {
-    firstVal = true;
-  }
+  // if (bedyValues.every(value => value === 0)) {
+  //   firstVal = true;
+  // }
   
   if (firstVal == true) {
     bedyValues.length = 0;
@@ -657,9 +657,9 @@ let updateBedGraph = (data) => {
 let updateNozzleGraph = (data) => {
   let firstVal = false;
 
-  if (nozzleyValues.every(value => value === 0)) {
-    firstVal = true;
-  }
+  // if (nozzleyValues.every(value => value === 0)) {
+  //   firstVal = true;
+  // }
   
   if (firstVal == true) {
     nozzleyValues.length = 0;

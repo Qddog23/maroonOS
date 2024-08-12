@@ -1,5 +1,6 @@
 import requests
 import random
+import sys
 from flask_cors import CORS
 from flask import Flask, jsonify
 from flask import send_file
@@ -10,14 +11,18 @@ import os
 
 global devMode, status, job, info, version, apiKey, count, printerInfo
 
-load_dotenv(override=True)
+# Load environment variables
+def loadEnv(path):
+    global ipAddress, apiKey, printerInfo
 
-ipAddress = os.getenv('IP')
-apiKey = os.getenv('API_KEY')
-printerInfo = {
-    "name": os.getenv('PRINTER_NAME'),
-    "firmware": os.getenv('FIRMWARE'),
-}
+    load_dotenv(dotenv_path=f".env.{path}", override=True)
+
+    ipAddress = os.getenv('IP')
+    apiKey = os.getenv('API_KEY')
+    printerInfo = {
+        "name": os.getenv('PRINTER_NAME'),
+        "firmware": os.getenv('FIRMWARE'),
+    }
 
 count = 0       # Used in dev mode to cycle through different states
 
@@ -87,7 +92,7 @@ def liveBed():
 
 @app.route('/')
 def hello():
-    return 'Hello, World!'
+    return printerInfo["name"]
 
 @app.route('/status')
 def getStatus():
@@ -100,8 +105,8 @@ def getStatus():
             elif count == 6:
                 status['printer']['state'] = 'IDLE'
                 count = 0
-        # status['printer']['temp_nozzle'] = liveNozzle()
-        # status['printer']['temp_bed'] = liveBed()
+        status['printer']['temp_nozzle'] = liveNozzle()
+        status['printer']['temp_bed'] = liveBed()
         status['printer']['target_nozzle'] = liveNozzle()
         status['printer']['target_bed'] = liveBed()
         status['printer']['speed'] = liveProgress()
@@ -158,4 +163,12 @@ def getThumbnail():
 
 if __name__ == '__main__':
     from waitress import serve
-    serve(app, host="127.0.0.1", port=8002)
+
+    if len(sys.argv) > 1:
+        port = int(sys.argv[1])
+    else:
+        port = 8002
+
+    loadEnv(str(port)[-1])
+
+    serve(app, host="127.0.0.1", port=port)

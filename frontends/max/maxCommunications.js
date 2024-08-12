@@ -5,15 +5,17 @@ sleep.style.display = '';
 live.style.display = 'none';
 
 const iframes = [
-    { id: 'iframe1', port: 8001, display: false },
-    { id: 'iframe2', port: 8002, display: false },
-    { id: 'iframe3', port: 8003, display: false },
+    { id: 'iframe1', port: 8001, display: false, verification: 3 },
+    { id: 'iframe2', port: 8002, display: false, verification: 3 },
+    { id: 'iframe3', port: 8003, display: false, verification: 3 },
   ];
 
 iframes.forEach(iframeConfig => {
     const iframe = document.getElementById(iframeConfig.id);
     iframe.onload = () => {
-        iframe.contentWindow.postMessage({ port: iframeConfig.port }, '*');
+        if (iframeConfig.id === iframe.id) {
+            iframe.contentWindow.postMessage(iframeConfig, '*');
+        }
     };
 });
 

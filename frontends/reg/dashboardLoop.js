@@ -18,13 +18,14 @@ let sleepUpdateInterval = 2000;
 let maxBedValue = -1;
 let maxNozzleValue = -1;
 
-
 var portNum = 8002; // Default port number
 
 window.addEventListener('message', (event) => {
-  portNum = event.data.port;
+  if (event.data.verification == 3) {
+    portNum = event.data.port;
 
-  sleep = document.getElementById('sleepAlt');
+    sleep = document.getElementById('sleepAlt');
+  }
 });
 
 let canvas = document.getElementById('bedChart');

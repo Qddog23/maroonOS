@@ -26,7 +26,7 @@ def loadEnv(path):
 
 count = 0       # Used in dev mode to cycle through different states
 
-devMode = True  # Set to True to run in development mode (works offline or when pi/printer isn't available)
+devMode = False  # Set to True to run in development mode (works offline or when pi/printer isn't available)
 cycleStates = False  # Set to True to cycle through different printer states when dev mode is True
 
 status = {
@@ -138,7 +138,7 @@ def getInfo():
 @app.route('/thumbnail')
 def getThumbnail():
     ipAddress = os.getenv('IP_ADDRESS')
-    
+
     if devMode:
         # return send_file('../frontends/assets/RobocubsLogo.png', mimetype='image/png')
         return send_file('../docs/ThumbnailDemo.png', mimetype='image/png')

@@ -320,12 +320,12 @@ let getStatus = (callback) => {
   });
 }
 
-let getThumbnail = (iframeId) => {
-    // Run once on startup
-    fetch(`http://127.0.0.1:${portNum}/thumbnail`)
+let getThumbnail = () => {
+  // Run once on startup
+  fetch(`http://127.0.0.1:${portNum}/thumbnail`)
     .then(response => response.blob())
     .then(blob => {
-        let view = document.getElementById(`thumbnail-${iframeId}`);
+        let view = document.getElementById('thumbnail');
         let image = URL.createObjectURL(blob);
         let size = new Image();
         size.src = image;
@@ -813,7 +813,7 @@ let nozzleAnimateGradient = () => {
 }
 
 function staticPrinting() {
-  getThumbnail(portNum);
+  getThumbnail();
   parentCommunication(true);
   live.style.display = '';
   sleep.style.display = 'none';

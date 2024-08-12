@@ -4,8 +4,8 @@ let lightgrey = getComputedStyle(document.documentElement).getPropertyValue('--l
 let darkgrey = getComputedStyle(document.documentElement).getPropertyValue('--dark-grey');
 document.getElementById('progressNotices').style.animation = 'none';
 
-const live = document.getElementById('live');
-const sleep = document.getElementById('sleep');
+var live = document.getElementById('live');
+var sleep = document.getElementById('sleep');
 sleep.style.display = '';
 live.style.display = 'none';
 
@@ -19,6 +19,8 @@ var portNum = 8002; // Default port number
 
 window.addEventListener('message', (event) => {
   portNum = event.data.port;
+
+  sleep = document.getElementById('sleepAlt');
 });
 
 let canvas = document.getElementById('bedChart');

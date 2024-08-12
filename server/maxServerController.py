@@ -6,7 +6,7 @@ def startServers():
     processes = []
 
     for port in ports:
-        process = subprocess.Popen(['python3', 'server/server.py', str(port)])
+        process = subprocess.Popen(['python3', 'server.py', str(port)])
         processes.append(process)
 
     for process in processes:

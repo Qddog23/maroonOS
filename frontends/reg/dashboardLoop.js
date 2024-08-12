@@ -4,8 +4,12 @@ let lightgrey = getComputedStyle(document.documentElement).getPropertyValue('--l
 let darkgrey = getComputedStyle(document.documentElement).getPropertyValue('--dark-grey');
 document.getElementById('progressNotices').style.animation = 'none';
 
+var sleep = document.getElementById('sleepAlt');
+sleep.style.display = 'none';
+
 var live = document.getElementById('live');
-var sleep = document.getElementById('sleep');
+sleep = document.getElementById('sleep');
+
 sleep.style.display = '';
 live.style.display = 'none';
 

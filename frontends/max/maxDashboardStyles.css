@@ -8,6 +8,7 @@
 }
 html {
     cursor: none;
+    overflow: hidden;
 }
 .container {
     display: flex;

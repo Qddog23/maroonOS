@@ -23,7 +23,6 @@ def loadEnv(path):
         "name": os.getenv('PRINTER_NAME'),
         "firmware": os.getenv('FIRMWARE'),
     }
-    print(ipAddress, apiKey, printerInfo)
 
 count = 0       # Used in dev mode to cycle through different states
 

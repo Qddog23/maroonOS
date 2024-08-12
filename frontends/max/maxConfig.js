@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const scaleFactor = 0.8445;
+    const scaleFactor = 0.4225;
     const inverseScaleFactor = 1 / scaleFactor;
     const bodyElement = document.body;
 

@@ -15,7 +15,7 @@ global devMode, status, job, info, version, apiKey, count, printerInfo
 def loadEnv(path):
     global ipAddress, apiKey, printerInfo
 
-    load_dotenv(dotenv_path=f".env.{path}", override=True)
+    load_dotenv(dotenv_path=f"../.env.{path}", override=True)
 
     ipAddress = os.getenv('IP')
     apiKey = os.getenv('API_KEY')
@@ -23,6 +23,7 @@ def loadEnv(path):
         "name": os.getenv('PRINTER_NAME'),
         "firmware": os.getenv('FIRMWARE'),
     }
+    print(ipAddress, apiKey, printerInfo)
 
 count = 0       # Used in dev mode to cycle through different states
 

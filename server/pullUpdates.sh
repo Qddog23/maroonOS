@@ -15,7 +15,7 @@ chmod +x server/pullUpdates.sh
 chmod +x server/server.py
 chmod +x server/settingsServer.py
 
-chmod +x frontends/regular/chromiumStart.sh
-
+chmod +x frontends/reg/chromiumStart.sh
+chmod +x frontends/max/chromiumStart.sh
 
 sudo reboot

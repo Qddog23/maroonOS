@@ -11,8 +11,12 @@ if [ "$(git diff origin/main)" != "" ]; then
 fi
 
 chmod +x server/serverStart.sh
+chmod +x server/maxServerStart.sh
+
 chmod +x server/pullUpdates.sh
+
 chmod +x server/server.py
+chmod +x server/maxServerController.py
 chmod +x server/settingsServer.py
 
 chmod +x frontends/reg/chromiumStart.sh

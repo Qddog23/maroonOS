@@ -56,8 +56,14 @@ Setup Dashboard
         cd maroonOS
 
     Use the following steps to create the .env file:
-        touch .env
-        nano .env
+        For Single Printer:
+            touch .env.2
+            nano .env.2
+
+        For Three Printers:
+            touch .env.1
+            nano .env.1
+            [repeat for .env.2 and .env.3]
 
         Copy the contents of the envTemplate.txt file into the .env file
         Fill in the necessary information (lots of which can be found on Connect - make sure you use the Prusa Link API key)
@@ -67,10 +73,14 @@ Setup Dashboard
         crontab -e
         (If prompted to select an editor, choose nano)
 
-        Go to a free line and type the following:
+        For a Single Printer Setup, go to a free line and type the following:
             # Python Server Start
             @reboot /home/robocubs/maroonOS/server/serverStart.sh > /home/robocubs/maroonOS/server/startupErrorLogs/startup.log 2>&1
         
+        For a Three Printer Setup, go to a free line and type the following:
+            # Python Server Start
+            @reboot /home/robocubs/maroonOS/server/maxServerStart.sh > /home/robocubs/maroonOS/server/startupErrorLogs/startup.log 2>&1
+
         Exit (CTRL + X) and save (Y)
 
     Use the following steps to configure the dashboard start:
@@ -82,7 +92,8 @@ Setup Dashboard
         touch maroonOS.desktop
         nano maroonOS.desktop
 
-        Copy the contents of the dotDesktopTemplate.txt file into the maroonOS.desktop file
+        For a Single Printer Setup, copy the contents of the dotDesktopTemplateSingle.txt file into the maroonOS.desktop file
+        For a Three Printer Setup, copy the contents of the dotDesktopTemplateMax.txt file into the maroonOS.desktop file
 
         Save and exit the file (CTRL + X, Y, Enter)
 

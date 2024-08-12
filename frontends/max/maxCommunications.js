@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 const live = document.getElementById('live');
-const sleep = document.getElementById('sleep');
+const sleep = document.getElementById('sleepAlt');
 sleep.style.display = '';
 live.style.display = 'none';
 

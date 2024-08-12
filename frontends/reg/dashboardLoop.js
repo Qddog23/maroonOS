@@ -326,7 +326,7 @@ let getThumbnail = () => {
     .then(response => response.blob())
     .then(blob => {
         let view = document.getElementById('thumbnail');
-        let image = URL.createObjectURL(blob);
+        let image = URL.createObjectURL(blob)+ `?${portNum}`;
         let size = new Image();
         size.src = image;
         size.onload = function() {

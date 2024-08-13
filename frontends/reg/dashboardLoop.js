@@ -328,17 +328,17 @@ let getThumbnail = () => {
         let view = document.getElementById('thumbnail');
         let base64Image = data.image;
         let image = `data:image/png;base64,${base64Image}`;
+        let size = new Image();
         size.src = image;
         size.onload = function() {
-          view.src = image;
-          // if (size.width != 999 || size.height != 999) {
-          //  view.style.width = '90%';
-          //  view.style.height = '90%';
-          //  view.src = '../assets/RobocubsLogo.png';
-          // }
-          // else{
-          //   view.src = image;
-          //}
+          if (size.width != 999 || size.height != 999) {
+           view.style.width = '90%';
+           view.style.height = '90%';
+           view.src = '../assets/RobocubsLogo.png';
+          }
+          else{
+            view.src = image;
+          }
         };
     })
     .catch(error => {

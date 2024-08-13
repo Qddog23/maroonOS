@@ -8,6 +8,7 @@ from flask import after_this_request
 import tempfile
 from dotenv import load_dotenv
 import os
+import io
 
 global devMode, status, job, info, version, apiKey, count, printerInfo
 
@@ -149,19 +150,9 @@ def getThumbnail():
         imagePath = response['file']['refs']['thumbnail']
         response = requests.get(f'http://{ipAddress}{imagePath}', headers=headers)
 
-        with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as temp:
-            temp.write(response.content)
-            temp_path = temp.name
-
-        @after_this_request
-        def removeTemp(response):
-            try:
-                os.remove(temp_path)
-            except Exception as error:
-                app.logger.error("Error removing or closing downloaded image file: %s", error)
-            return response
+        image_io = io.BytesIO(response.content)
         
-        return send_file(temp_path, mimetype='image/png')
+        return send_file(image_io, mimetype='image/png')
 
 if __name__ == '__main__':
     from waitress import serve

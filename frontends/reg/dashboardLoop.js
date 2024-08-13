@@ -323,11 +323,11 @@ let getStatus = (callback) => {
 let getThumbnail = () => {
   // Run once on startup
   fetch(`http://127.0.0.1:${portNum}/thumbnail`)
-    .then(response => response.blob())
-    .then(blob => {
+    .then(response => response.json())
+    .then(data => {
         let view = document.getElementById('thumbnail');
-        let image = URL.createObjectURL(blob);
-        let size = new Image();
+        let base64Image = data.image;
+        let image = `data:image/png;base64,${base64Image}`;
         size.src = image;
         size.onload = function() {
           if (size.width != 999 || size.height != 999) {

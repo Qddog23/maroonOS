@@ -3,12 +3,9 @@ import random
 import sys
 from flask_cors import CORS
 from flask import Flask, jsonify
-from flask import send_file
-from flask import after_this_request
-import tempfile
 from dotenv import load_dotenv
 import os
-import io
+import base64
 
 global devMode, status, job, info, version, apiKey, count, printerInfo
 
@@ -138,21 +135,33 @@ def getInfo():
     
 @app.route('/thumbnail')
 def getThumbnail():
-    ipAddress = os.getenv('IP_ADDRESS')
-
     if devMode:
         # return send_file('../frontends/assets/RobocubsLogo.png', mimetype='image/png')
-        return send_file('../docs/ThumbnailDemo.png', mimetype='image/png')
+        try:
+            with open('../docs/ThumbnailDemo.png', 'rb') as f:
+                image_data = f.read()
+            encoded_image = base64.b64encode(image_data).decode('utf-8')
+            return jsonify({'image': encoded_image})
+        except Exception as e:
+            return jsonify({'error': 'Error reading local image'}), 500
     else:
         headers = {'X-Api-Key': apiKey}
-        response = requests.get(f'http://{ipAddress}/api/v1/job', headers=headers)
-        response = response.json()
-        imagePath = response['file']['refs']['thumbnail']
-        response = requests.get(f'http://{ipAddress}{imagePath}', headers=headers)
+        try:
+            response = requests.get(f'http://{ipAddress}/api/v1/job', headers=headers)
+            if response.status_code != 200:
+                return
+            
+            response_json = response.json()
+            imagePath = response_json['file']['refs']['thumbnail']
+            image_response = requests.get(f'http://{ipAddress}{imagePath}', headers=headers)
+            if image_response.status_code != 200:
+                return
 
-        image_io = io.BytesIO(response.content)
-        
-        return send_file(image_io, mimetype='image/png')
+            image_data = image_response.content
+            encoded_image = base64.b64encode(image_data).decode('utf-8')
+            return jsonify({'image': encoded_image})
+        except Exception as e:
+            return
 
 if __name__ == '__main__':
     from waitress import serve

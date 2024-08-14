@@ -257,7 +257,7 @@ let getJobStatic = () => {
     .then(data => {
       let fileName = data.file.display_name.split('_');
       if (printerType == 'connect.prusa3d.com') {
-        checkLength(checkIS(fileName)[3]);
+        checkLength(checkIS(fileName)[0]);
         document.getElementById('filamentType').textContent = fileName[2];
 
         document.getElementById('layerHeight').textContent = fileName[1].replace('mm', '');
@@ -303,11 +303,20 @@ let getInfo = () => {
     .then(data => {
       document.getElementById('printerName').textContent = data.name;
       document.getElementById('firmwareVersion').textContent = 'FW ' + data.firmware;
+    })
+    .catch(error => {});
+}
+
+let getMachineInfo = () => {
+  // Run once on startup
+  fetch(`http://127.0.0.1:${portNum}/machineInfo`)
+    .then(response => response.json())
+    .then(data => {
       printerType = data.hostname;
       if (printerType == 'connect.prusa3d.com') {
         nozzleSize = data.nozzle_diameter;
       }
-    })
+      })
     .catch(error => {});
 }
 
@@ -478,6 +487,9 @@ let calcTime = (time) => {
 let checkIS = (title) => {
   if (title[4] == 'MK4IS') {
     document.getElementById('ISLabel').textContent = 'On';
+  }
+  else if (title[3] == 'MK3S') {
+    document.getElementById('ISLabel').textContent = '---';
   }
   else {
     document.getElementById('ISLabel').textContent = 'Off';
@@ -843,6 +855,7 @@ function staticPrinting() {
   sleep.style.display = 'none';
   getJobStatic();
   getInfo();
+  getMachineInfo();
   updateDate();
   getJobDynamic();
   getStatus(state => {});

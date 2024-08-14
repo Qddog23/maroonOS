@@ -66,11 +66,23 @@ job = {
             "download": "/usb/AMPSTA~1.BGC",
         },
         "name":"AMPSTA~1.BGC",
-        "display_name": "Amp Station Blue_0.4n_0.1mm_PLA_MK4IS_2h58m.bgcode:",
+        "display_name": "BigHook_0.2mm_PETG_MK3S_54m.gcode",
         "path": "/usb",
         "size":0,
         "m_timestamp": 1704831009,
     }
+}
+
+machineInfo = {
+    "name": "Prusa MK3 [A]",
+    "location": "Robotics Lab",
+    "farm_mode": "false",
+    "network_error_chime": "false",
+    "nozzle_diameter": 0.4,
+    "min_extrusion_temp": 170,
+    "serial": "CZPX0019X004XK01387",
+    "hostname": "connect.prusa3d.com",
+    "port": 0
 }
 
 app = Flask(__name__)
@@ -132,6 +144,16 @@ def getJob():
 @app.route('/info')
 def getInfo():
     return jsonify(printerInfo)
+
+@app.route('/machineInfo')
+def getMachineInfo():
+    if devMode:
+        return jsonify(machineInfo)
+    else:
+        headers = {'X-Api-Key': apiKey}
+        response = requests.get(f'http://{ipAddress}/api/v1/info', headers=headers)
+        return response.text
+
     
 @app.route('/thumbnail')
 def getThumbnail():

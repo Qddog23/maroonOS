@@ -247,19 +247,38 @@ let darkNozzleChart = new Chart("darkNozzleChart", {
 }
 });
 
+let printerType;
+let nozzleSize;
+
 let getJobStatic = () => {
   // Run once on startup
   fetch(`http://127.0.0.1:${portNum}/job`)
     .then(response => response.json())
     .then(data => {
       let fileName = data.file.display_name.split('_');
-      checkLength(checkIS(fileName)[0]);
-      document.getElementById('filamentType').textContent = fileName[3];
-      document.getElementById('layerHeight').textContent = fileName[2].replace('mm', '');
-      document.getElementById('layerUnit').textContent = 'mm';
-      document.getElementById('nozzleDiameter').textContent = fileName[1].replace('n', '');
-      document.getElementById('nozzleUnit').textContent = 'mm';
-      document.getElementById('timeString').innerHTML = calcTime(fileName[5].split('.')[0]);
+      if (printerType == 'connect.prusa3d.com') {
+        checkLength(checkIS(fileName)[3]);
+        document.getElementById('filamentType').textContent = fileName[2];
+
+        document.getElementById('layerHeight').textContent = fileName[1].replace('mm', '');
+        document.getElementById('layerUnit').textContent = 'mm';
+
+        document.getElementById('nozzleDiameter').textContent = nozzleSize;
+        document.getElementById('nozzleUnit').textContent = 'mm';
+
+        document.getElementById('timeString').innerHTML = calcTime(fileName[4].split('.')[0]);
+      } else {
+        checkLength(checkIS(fileName)[0]);
+        document.getElementById('filamentType').textContent = fileName[3];
+
+        document.getElementById('layerHeight').textContent = fileName[2].replace('mm', '');
+        document.getElementById('layerUnit').textContent = 'mm';
+
+        document.getElementById('nozzleDiameter').textContent = fileName[1].replace('n', '');
+        document.getElementById('nozzleUnit').textContent = 'mm';
+
+        document.getElementById('timeString').innerHTML = calcTime(fileName[5].split('.')[0]);
+      }
     })
     .catch(error => {});
 }
@@ -284,6 +303,10 @@ let getInfo = () => {
     .then(data => {
       document.getElementById('printerName').textContent = data.name;
       document.getElementById('firmwareVersion').textContent = 'FW ' + data.firmware;
+      printerType = data.hostname;
+      if (printerType == 'connect.prusa3d.com') {
+        nozzleSize = data.nozzle_diameter;
+      }
     })
     .catch(error => {});
 }

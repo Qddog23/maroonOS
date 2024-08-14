@@ -485,7 +485,7 @@ let calcTime = (time) => {
 }
 
 let checkIS = (title) => {
-  if (title[4] == 'MK4IS') {
+  if (title[4] == 'MK4IS' || title[4] == 'XLIS') {
     document.getElementById('ISLabel').textContent = 'On';
   }
   else if (title[3] == 'MK3S') {

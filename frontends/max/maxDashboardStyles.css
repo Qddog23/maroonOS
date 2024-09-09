@@ -34,3 +34,7 @@ html {
     width: 100%;
     object-fit: contain;
 }
+
+.imagePadding {
+    padding: 500px;
+}

@@ -1,5 +1,2 @@
-Landscape 
-    3840x2160 for Images
-    1920x1080 for Videos
-
+Landscape 1920×1080
 Portrait 1440×2560

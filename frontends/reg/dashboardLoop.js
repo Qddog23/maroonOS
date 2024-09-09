@@ -10,7 +10,7 @@ sleep.style.display = 'none';
 var live = document.getElementById('live');
 sleep = document.getElementById('sleep');
 
-sleep.style.display = '';
+sleep.style.display = 'none';
 live.style.display = 'none';
 
 let liveUpdateInterval = 1000;

@@ -10,15 +10,24 @@ const iframes = [
     { id: 'iframe3', port: 8003, display: false, verification: 3 },
   ];
 
-iframes.forEach(iframeConfig => {
-    const iframe = document.getElementById(iframeConfig.id);
-    iframe.onload = () => {
-        if (iframeConfig.id === iframe.id) {
-            iframe.contentWindow.postMessage(iframeConfig, '*');
-        }
-    };
-});
+function updateMaxConfiguration() {
+    // Tunnel to iframes
+    iframes.forEach(iframeConfig => {
+        const iframe = document.getElementById(iframeConfig.id);
+        iframe.onload = () => {
+            if (iframeConfig.id === iframe.id) {
+                iframe.contentWindow.postMessage(iframeConfig, '*');
+            }
+        };
+    });
+}
 
+updateMaxConfiguration();
+
+// Contact the iframes every second
+setInterval(updateMaxConfiguration, 1000);
+
+// Listener to iframes
 window.addEventListener('message', (event) => {
     const data = event.data;
     const iframe = iframes.find(iframeConfig => iframeConfig.port === data.port);

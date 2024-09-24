@@ -20,6 +20,7 @@ let maxNozzleValue = -1;
 
 var portNum = 8002; // Default port number
 
+// Listener to parent
 window.addEventListener('message', (event) => {
   if (event.data.verification == 3) {
     portNum = event.data.port;
@@ -867,6 +868,7 @@ function dynamicPrinting() {
   getJobDynamic();
 }
 
+// Tunnel to parent
 function parentCommunication(display) {
   const message = {
     display: display,
@@ -874,6 +876,9 @@ function parentCommunication(display) {
   };
   window.parent.postMessage(message, '*');
 }
+
+// TODO: Address issue of iframe sleep screen not disappearing when printing
+// Occurs when the page first loads without connection to a server (might have something to do with async loops)
 
 // MAIN LOOP
 function mainLoop() {
